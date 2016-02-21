@@ -14,7 +14,6 @@ AC_CONFIG_HEADERS(config.h)
 AC_DISABLE_STATIC
 
 AC_LANG([C++])
-AM_PROG_AR
 AC_PROG_CXX
 
 AC_OPENMP
@@ -36,15 +35,15 @@ AC_ARG_WITH([occ],
         [AC_HELP_STRING([--with-occ=dir],[use OpenCascade installed in directory dir])],
         [occdir=$withval] 
 	[occon=true],
-	[occdir=/opt/OpenCASCADE]
+	[occdir=$CASROOT]
         )
 
 
 
 if test a$occon = atrue ; then
 
-	AC_SUBST([OCCFLAGS], ["-DOCCGEOMETRY -I$occdir/inc -I/usr/include/opencascade"])
-	AC_SUBST([OCCLIBS], ["-L$occdir/lib -lTKernel -lTKGeomBase -lTKMath -lTKG2d -lTKG3d -lTKXSBase -lTKOffset -lTKFillet -lTKShHealing -lTKMesh -lTKMeshVS -lTKTopAlgo -lTKGeomAlgo -lTKBool -lTKPrim -lTKBO -lTKIGES -lTKBRep -lTKSTEPBase -lTKSTEP -lTKSTL -lTKSTEPAttr -lTKSTEP209 -lTKXDESTEP -lTKXDEIGES -lTKXCAF -lTKLCAF -lFWOSPlugin"])
+	AC_SUBST([OCCFLAGS], ["-DOCCGEOMETRY -I$occdir/inc"])
+	AC_SUBST([OCCLIBS], ["-lTKernel -lTKGeomBase -lTKMath -lTKG2d -lTKG3d -lTKXSBase -lTKOffset -lTKFillet -lTKShHealing -lTKMesh -lTKMeshVS -lTKTopAlgo -lTKGeomAlgo -lTKBool -lTKPrim -lTKBO -lTKIGES -lTKBRep -lTKSTEPBase -lTKSTEP -lTKSTL -lTKSTEPAttr -lTKSTEP209 -lTKXDESTEP -lTKXDEIGES -lTKXCAF -lTKLCAF -lFWOSPlugin"])
 
 #  -lTKDCAF
 
@@ -90,18 +89,18 @@ AC_ARG_ENABLE([gui],
         [AC_HELP_STRING([--disable-gui],[don't build netgen with GUI])],
         [if test "$enableval" = yes; then ngguion=true; else ngguion=false; fi])
 
-metisdir=/usr/local
+metisdir=/usr
 AC_ARG_WITH([metis], 
         [AC_HELP_STRING([--with-metis=dir],[path to metis 5.x])],
         [metisdir=$withval],
-        [metisdir=/usr/local]
+        [metisdir=/usr]
 	)
 
 AC_ARG_ENABLE([parallel],
         [AC_HELP_STRING([--enable-parallel],[enable mpi parallelization])],
-	[AC_SUBST([MPI_INCLUDES], "-I$metisdir/include -DMETIS")]
+	[AC_SUBST([MPI_INCLUDES], "-DMETIS")]
         [CXXFLAGS="$CXXFLAGS -DPARALLEL"]
-	[AC_SUBST([MPI_LIBS], "-L$metisdir/lib -lmetis")]
+	[AC_SUBST([MPI_LIBS], "-lmetis")]
         )       
 #          -DVTRACE
 #          -lvt-hyb

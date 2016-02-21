@@ -14,20 +14,20 @@ AM_CPPFLAGS = -I$(top_srcdir)/libsrc/include  $(OCCFLAGS) $(TCL_INCLUDES)
 
 METASOURCES = AUTO
 
-lib_LTLIBRARIES = libocc.la
+lib_LTLIBRARIES = libngocc.la
 
 if NGGUI
-lib_LTLIBRARIES += liboccvis.la 
+lib_LTLIBRARIES += libngoccvis.la 
 endif
 
 
-libocc_la_SOURCES = Partition_Inter2d.cxx Partition_Inter3d.cxx \
+libngocc_la_SOURCES = Partition_Inter2d.cxx Partition_Inter3d.cxx \
 	Partition_Loop.cxx Partition_Loop2d.cxx Partition_Loop3d.cxx Partition_Spliter.cxx \
 	occconstruction.cpp occgenmesh.cpp occgeom.cpp occmeshsurf.cpp
 
-libocc_la_LIBADD = $(OCCLIBS)
+libngocc_la_LIBADD = $(OCCLIBS)
 
-liboccvis_la_SOURCES = occpkg.cpp vsocc.cpp
-liboccvis_la_LIBADD = libocc.la
+libngoccvis_la_SOURCES = occpkg.cpp vsocc.cpp
+libngoccvis_la_LIBADD = libngocc.la $(TCL_LIB_SPEC)
 
 

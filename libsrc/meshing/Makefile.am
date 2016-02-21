@@ -15,9 +15,9 @@ clusters.hpp hprefinement.hpp improve3.hpp meshtype.hpp		      \
 
 METASOURCES = AUTO
 
-lib_LTLIBRARIES = libmesh.la
+lib_LTLIBRARIES = libngmesh.la
 
-libmesh_la_SOURCES = adfront2.cpp adfront3.cpp bisect.cpp boundarylayer.cpp \
+libngmesh_la_SOURCES = adfront2.cpp adfront3.cpp bisect.cpp boundarylayer.cpp \
 	clusters.cpp curvedelems.cpp delaunay.cpp delaunay2d.cpp	    \
 	geomsearch.cpp global.cpp hprefinement.cpp improve2.cpp		    \
 	improve2gen.cpp improve3.cpp localh.cpp meshclass.cpp		    \
@@ -30,8 +30,8 @@ libmesh_la_SOURCES = adfront2.cpp adfront3.cpp bisect.cpp boundarylayer.cpp \
 	topology.cpp triarls.cpp validate.cpp zrefine.cpp bcfunctions.cpp   \
 	parallelmesh.cpp  paralleltop.cpp  paralleltop.hpp basegeom.cpp 
 
-libmesh_la_LIBADD =  $(top_builddir)/libsrc/linalg/libla.la \
-	$(top_builddir)/libsrc/gprim/libgprim.la \
-	$(top_builddir)/libsrc/general/libgen.la \
-	-lz
+libngmesh_la_LIBADD =  $(top_builddir)/libsrc/linalg/libngla.la \
+	$(top_builddir)/libsrc/gprim/libnggprim.la \
+	$(top_builddir)/libsrc/general/libnggen.la \
+	$(MPI_LIBS) -lz
 

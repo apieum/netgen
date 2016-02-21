@@ -4,18 +4,18 @@ AM_CPPFLAGS = -I$(top_srcdir)/libsrc/include  $(TCL_INCLUDES)
 
 METASOURCES = AUTO
 
-lib_LTLIBRARIES = libgeom2d.la 
+lib_LTLIBRARIES = libnggeom2d.la 
 
 if NGGUI
-lib_LTLIBRARIES += libgeom2dvis.la 
+lib_LTLIBRARIES += libnggeom2dvis.la 
 endif
 
 
 
-libgeom2d_la_SOURCES = genmesh2d.cpp geom2dmesh.cpp geometry2d.cpp
-libgeom2d_la_LIBADD = 	$(top_builddir)/libsrc/meshing/libmesh.la
+libnggeom2d_la_SOURCES = genmesh2d.cpp geom2dmesh.cpp geometry2d.cpp
+libnggeom2d_la_LIBADD = $(top_builddir)/libsrc/meshing/libngmesh.la $(MPI_LIBS)
 
-libgeom2dvis_la_SOURCES = geom2dpkg.cpp vsgeom2d.cpp
-libgeom2dvis_la_LIBADD = libgeom2d.la
+libnggeom2dvis_la_SOURCES = geom2dpkg.cpp vsgeom2d.cpp
+libnggeom2dvis_la_LIBADD = libnggeom2d.la -lGL $(MPI_LIBS)
 
 

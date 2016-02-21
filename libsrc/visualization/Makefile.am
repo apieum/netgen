@@ -7,11 +7,11 @@ AM_CPPFLAGS =  $(MPI_INCLUDES) -I$(top_srcdir)/libsrc/include  -DOPENGL -D$(TOGL
 METASOURCES = AUTO
 
 if NGGUI
-noinst_LTLIBRARIES = libvisual.la
+noinst_LTLIBRARIES = libngvisual.la
 endif
 
 
-libvisual_la_SOURCES = meshdoc.cpp mvdraw.cpp \
+libngvisual_la_SOURCES = meshdoc.cpp mvdraw.cpp \
 	vsfieldlines.cpp vsmesh.cpp vssolution.cpp importsolution.cpp
 
-
+libngvisual_la_LIBADD = -lGL

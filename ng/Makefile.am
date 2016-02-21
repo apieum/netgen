@@ -17,21 +17,18 @@ MKL_LIBS = -L$(MKLROOT)/lib/intel64  -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_cor
 endif
 # -lpardiso500-GNU472-X86-64 -lgfortran
 
-netgen_LDADD = $(top_builddir)/libsrc/visualization/libvisual.la \
-	$(top_builddir)/libsrc/csg/libcsgvis.la \
-	$(top_builddir)/libsrc/csg/libcsg.la \
-	$(top_builddir)/libsrc/interface/libinterface.la \
-	$(top_builddir)/libsrc/meshing/libmesh.la \
-	-L$(TK_BIN_DIR)/Togl1.7 $(TOGLLIBDIR) -lTogl $(LIBGLU) $(TK_LIB_SPEC) $(TCL_LIB_SPEC) $(MPI_LIBS) $(FFMPEG_LIBS) $(JPEGLIB_LIBS) $(PKG_LIBS) $(MKL_LIBS) 
-
-
-#
-#	$(top_builddir)/libsrc/occ/liboccvis.la 
-#	$(top_builddir)/libsrc/occ/libocc.la 
-#	$(top_builddir)/libsrc/stlgeom/libstlvis.la 
-#	$(top_builddir)/libsrc/stlgeom/libstl.la 
-#	$(top_builddir)/libsrc/geom2d/libgeom2d.la 
-#	$(top_builddir)/libsrc/geom2d/libgeom2dvis.la 
+netgen_LDADD = $(top_builddir)/libsrc/visualization/libngvisual.la \
+	$(top_builddir)/libsrc/csg/libngcsgvis.la \
+	$(top_builddir)/libsrc/csg/libngcsg.la \
+	$(top_builddir)/libsrc/interface/libnginterface.la \
+	$(top_builddir)/libsrc/meshing/libngmesh.la \
+	$(top_builddir)/libsrc/occ/libngoccvis.la \
+	$(top_builddir)/libsrc/occ/libngocc.la \
+	$(top_builddir)/libsrc/stlgeom/libngstlvis.la \
+	$(top_builddir)/libsrc/stlgeom/libngstl.la \
+	$(top_builddir)/libsrc/geom2d/libnggeom2d.la \
+	$(top_builddir)/libsrc/geom2d/libnggeom2dvis.la \
+	-L$(TK_BIN_DIR)/Togl1.7 $(TOGLLIBDIR) -lTogl1.7 -ldl -lX11 $(LIBGLU) $(TK_LIB_SPEC) $(TCL_LIB_SPEC) $(MPI_LIBS) $(FFMPEG_LIBS) $(JPEGLIB_LIBS) $(PKG_LIBS) $(MKL_LIBS)
 
 
 # add for static linkage of ngsolve:

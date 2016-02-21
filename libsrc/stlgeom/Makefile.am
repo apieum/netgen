@@ -4,18 +4,18 @@ stltool.hpp stltopology.hpp vsstl.hpp
 AM_CPPFLAGS = -I$(top_srcdir)/libsrc/include $(TCL_INCLUDES)
 METASOURCES = AUTO
 
-lib_LTLIBRARIES = libstl.la 
+lib_LTLIBRARIES = libngstl.la 
 
 if NGGUI
-lib_LTLIBRARIES += libstlvis.la 
+lib_LTLIBRARIES += libngstlvis.la 
 endif
 
-libstl_la_SOURCES = meshstlsurface.cpp stlgeom.cpp stlgeomchart.cpp \
+libngstl_la_SOURCES = meshstlsurface.cpp stlgeom.cpp stlgeomchart.cpp \
 	stlgeommesh.cpp stlline.cpp stltool.cpp stltopology.cpp
 
 
-libstlvis_la_SOURCES = stlpkg.cpp vsstl.cpp
-libstlvis_la_LIBADD = libstl.la
-libstl_la_LIBADD =  $(top_builddir)/libsrc/meshing/libmesh.la
+libngstlvis_la_SOURCES = stlpkg.cpp vsstl.cpp
+libngstlvis_la_LIBADD = libngstl.la  -lGL $(MPI_LIBS) $(TCL_LIB_SPEC)
+libngstl_la_LIBADD = $(top_builddir)/libsrc/meshing/libngmesh.la $(MPI_LIBS)
 # libstlvis_la_LIBADD = libstl.la $(top_builddir)/libsrc/linalg/libla.la 
 
