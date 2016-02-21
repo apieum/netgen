@@ -962,10 +962,15 @@ namespace netgen
   }
   
 
-#ifdef METIS5
+#ifdef METIS
   void Mesh :: ParallelMetis (Array<int> & volume_weights , Array<int> & surface_weights, Array<int> & segment_weights)  
   {
+
+  	#ifdef METIS5
     PrintMessage (3, "call metis 5 with weights ...");
+    #else
+    PrintMessage (3, "call metis 4 with weights ...");
+    #endif
     
     // cout << "segment_weights " << segment_weights << endl;
     // cout << "surface_weights " << surface_weights << endl;
@@ -1034,9 +1039,15 @@ namespace netgen
 
 
     metis::idx_t ncommon = 3;
+    #ifdef METIS5
     METIS_PartMeshDual (&ne, &nn, &eptr[0], &eind[0], &nwgt[0], NULL, &ncommon, &nparts,
 			NULL, NULL,
 			&edgecut, &epart[0], &npart[0]);
+    #else
+    int numflag = 0;
+    METIS_PartMeshDual (&ne, &nn, &eptr[0], &eind[0], &numflag, &nparts,
+    	&edgecut, &epart[0], &npart[0]);
+    #endif
     /*
     METIS_PartMeshNodal (&ne, &nn, &eptr[0], &eind[0], NULL, NULL, &nparts,
 			 NULL, NULL,
