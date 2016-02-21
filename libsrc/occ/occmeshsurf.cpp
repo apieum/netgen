@@ -6,6 +6,7 @@
 #include <meshing.hpp>
 #include <GeomLProp_SLProps.hxx>
 #include <ShapeAnalysis_Surface.hxx>
+#include <GeomAPI_ProjectPointOnCurve.hxx> // -- moved here from occgeom.hpp
 
 
 namespace netgen
@@ -689,7 +690,7 @@ namespace netgen
       }
   
     newp = hnewp;
-  }
+  }//; -- to compile with -Wall -pedantic
 
 
   void OCCRefinementSurfaces :: 

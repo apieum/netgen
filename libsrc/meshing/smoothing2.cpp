@@ -361,7 +361,8 @@ namespace netgen
     vgrad = 0;
     double badness = 0;
 
-    ld.meshthis -> GetNormalVector (ld.surfi, ld.sp1, ld.gi1, n);
+    //normal already computed: ld.meshthis -> GetNormalVector (ld.surfi, ld.sp1, ld.gi1, n);
+    n = ld.normal;
     pp1 = ld.sp1 + x(0) * ld.t1 + x(1) * ld.t2;
 
     //  meshthis -> ProjectPoint (surfi, pp1);
@@ -577,7 +578,8 @@ namespace netgen
     vgrad = 0;
     badness = 0;
 
-    ld.meshthis -> GetNormalVector (ld.surfi, ld.sp1, ld.gi1, n);
+    //normal already computed: ld.meshthis -> GetNormalVector (ld.surfi, ld.sp1, ld.gi1, n);
+    n = ld.normal;
 
     pp1 = ld.sp1 + x(0) * ld.t1 + x(1) * ld.t2;
 
@@ -649,7 +651,8 @@ namespace netgen
     vgrad = 0;
     badness = 0;
 
-    ld.meshthis -> GetNormalVector (ld.surfi, ld.sp1, ld.gi1, n);
+    //normal already computed: ld.meshthis -> GetNormalVector (ld.surfi, ld.sp1, ld.gi1, n);
+    n = ld.normal;
 
     // pp1 = sp1;
     //    pp1.Add2 (x.Get(1), t1, x.Get(2), t2);
