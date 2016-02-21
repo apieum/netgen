@@ -302,7 +302,7 @@ top_srcdir = @top_srcdir@
 include_HEADERS = 
 AM_CPPFLAGS = -I$(top_srcdir)/libsrc/include \
 	-I$(top_srcdir)/libsrc/interface -DOPENGL \
-	-D$(TOGL_WINDOWINGSYSTEM) $(TCL_INCLUDES) $(MPI_INCLUDES) \
+	$(TCL_INCLUDES) $(MPI_INCLUDES) \
 	$(FFMPEG_INCLUDES) $(JPEGLIB_INCLUDES) $(am__append_1)
 netgen_SOURCES = demoview.cpp ngappinit.cpp onetcl.cpp parallelfunc.cpp ngpkg.cpp demoview.hpp parallelfunc.hpp togl_1_7.h
 @NGMKL_TRUE@MKL_LIBS = -L$(MKLROOT)/lib/intel64  -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lmkl_def
